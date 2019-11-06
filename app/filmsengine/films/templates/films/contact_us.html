@@ -1,0 +1,39 @@
+{% extends 'films/base_films.html' %}
+
+{% block title %}
+	vmovies - Contact US
+{% endblock %}
+
+{% block content %}
+
+<div class="title">
+    <h2>Contact US</h2>
+</div>
+<div class="container-contact100">
+<div class="wrap-contact100">
+    <form method="post" class="contact100-form validate-form">
+        {% csrf_token %}
+        {% for field in form %}
+		<div class="wrap-input100 validate-input">
+            {{field }}
+			<span class="focus-input100"></span>
+		</div>
+    	{% endfor %}
+
+        <div class="container-contact100-form-btn">
+            <button class="contact100-form-btn">
+                Send Email
+            </button>
+        </div>
+    </form>
+</div>
+</div>
+
+
+{% endblock %}
+				
+				
+				
+				
+				
+

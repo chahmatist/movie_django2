@@ -1,0 +1,195 @@
+{% extends 'films/base_films.html' %}
+
+{% block title %}
+    {{ movie.title|title }}
+{% endblock %}
+
+{% block content %}
+<div class="wrap">
+
+    <div class="video-left">
+        <div class="title">
+            <h2>WATCH {{ movie.title|title }} FULL MOVIE ONLINE2</h2>
+        </div>
+
+        <div class="boottplay">
+            <ul>
+                <li><a href="#">Stream in HD</a></li>
+                <li><a href="#">Download in HD</a></li>
+            </ul>
+        </div>
+
+        <!--        <div class="video-holder">-->
+        <!--            <iframe width="100%" height="465" src="http://www.youtube.com/embed/dahUupRjk54" frameborder="0"-->
+        <!--                    allowfullscreen></iframe>-->
+        <!--        </div>-->
+        <div class="video-holder">
+            <iframe width="100%" height="465" src="http://onlystream.tv/e/lvlo2bps50jy" frameborder="0"
+                    allowfullscreen></iframe>
+        </div>
+        <div class="banner">
+            <ul>
+                <li>
+                    <a href="#">REGISTER A FREE ACCOUNT TO WATCH THIS MOVIE IN HD</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="section">
+
+            <div class="wrap">
+                <ul class="tabs">
+                    <li class="current"><a>MOVIE INFO</a></li>
+<!--                    <li><a>FREE LINKS</a></li>-->
+<!--                    <li><a>COMMENTS</a></li>-->
+                </ul>
+
+            </div>
+
+            <div class="box visible">
+
+
+                <div class="wrap">
+                    <div class="title">
+                        <h2>{{ movie.title|title }}</h2>
+                    </div>
+
+                    <div class="rate-this">
+
+                        <div class="meta2">
+                            <ul>
+                                <li><img src="{{ movie.image.url }}" alt="{{ movie.title }}"/></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="meta">
+
+                        <ul>
+                            <li><span>Release:</span><strong>{{ movie.release|date:"Y.m.d"}}</strong></li>
+                            <li><span>Views:</span><strong>{{ movie.views}}</strong></li>
+                            {% if movies.quality %}
+                            <li><span>Quality:</span><strong>{{ movie.quality }}</strong></li>
+                            {% endif %}
+                        </ul>
+                        <ul>
+                            <li><span>Genre:</span>
+                                {% for genre in movie.genres.all %}
+                                <a href="{{ genre.get_absolute_url }}">{{ genre.name }}</a>
+                                {% endfor %}
+                            </li>
+                        </ul>
+                        <ul>
+                            <li><span>Director:</span>
+                                {% for director in movie.directors.all %}
+                                <a href="{{director.get_absolute_url_director}}">{{ director.name }}</a>
+                                {% endfor %}
+                            </li>
+                        </ul>
+                        <ul>
+                            <li><span>Stars:</span>
+                                {% for stars in movie.stars.all %}
+                                <a href="{{ stars.get_absolute_url_actor }}">{{ stars.name }}</a>
+                                {% endfor %}
+                            </li>
+                        </ul>
+                        {% if movie.country %}
+                        <ul>
+                            <li><span>Country:</span><a href="#">{{ movie.country }}</a></li>
+                        </ul>
+                        {% endif %}
+                        {% if movie.keywords %}
+                        <ul>
+                            <li><span>Keywords:</span><a href="#">movies</a>, <a href="#">online</a>, <a href="#">vmovies</a>,
+                                <a href="#">watch online</a></li>
+                        </ul>
+                        {% endif %}
+                        <div class="text-holder"><p>{{ movie.description}}</p></div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="box">
+
+
+                <div class="most-box">
+                    <div class="title"><h2>Click to choose server you want to watch:</h2></div>
+                    <ol>
+                        <li><a href="#"><span>Play Video</span></a><strong>thevideo</strong></li>
+                        <li><a href="#"><span>Play Video</span><strong>openload</strong></a></li>
+                        <li><a href="#"><span>Play Video</span><strong>vidzi</strong></a></li>
+                        <li><a href="#"><span>Play Video</span><strong>vidto</strong></a></li>
+                        <li><a href="#"><span>Play Video</span><strong>estream</strong></a></li>
+                        <li><a href="#"><span>Play Video</span><strong>vidlox</strong></a></li>
+                        <li><a href="#"><span>Play Video</span><strong>vshare</strong></a></li>
+                        <li><a href="#"><span>Play Video</span><strong>streamango</strong></a></li>
+                        <li><a href="#"><span>Play Video</span><strong>vidoza</strong></a></li>
+                        <li><a href="#"><span>Play Video</span><strong>vidtodo</strong></a></li>
+                        <li><a href="#"><span>Play Video</span><strong>watchers</strong></a></li>
+                    </ol>
+
+                </div>
+
+
+            </div>
+            <div class="box">
+                <br/><br/><br/><br/><br/>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="video-right">
+        <div class="title">
+            <h2>SIMILAR MOVIES</h2>
+        </div>
+        <ul>
+            {% for simular in simular_movie %}
+            <li>
+                <a href="{{ simular.get_absolute_url }}"
+                   title="{{ simular.title }}"><em>hdrip</em><span>{{ simular.title }}</span><img
+                        src="{{ simular.image.url }}" alt="{{ simular.title }}"/>
+                </a>
+            </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+
+</div>
+
+
+<div class="title">
+    <h2>NEW MOVIES</h2>
+    <a class="bookmark" href="{% url 'movies_all_url' %}">All new movies >></a>
+</div>
+<ul class="thumbs thumbs2">
+    {% for movie in new_movie %}
+            <li>
+                <a href="{{ movie.get_absolute_url }}"
+                   title="{{ movie.title }}"><em>hdrip</em><span>{{ movie.title }}</span><img
+                        src="{{ movie.image.url }}" alt="{{ movie.title }}"/>
+                </a>
+            </li>
+    {% endfor %}
+</ul>
+
+<div class="title"><h2>Popular Movies</h2>
+    <a class="bookmark" href="{% url 'popular_movies_url' %}">All popular movies >></a>
+</div>
+<ul class="thumbs thumbs2">
+    {% for movie in popular_movies %}
+            <li>
+                <a href="{{ movie.get_absolute_url }}"
+                   title="{{ movie.title }}"><em>hdrip</em><span>{{ movie.title }}</span><img
+                        src="{{ movie.image.url }}" alt="{{ movie.title }}"/>
+                </a>
+            </li>
+    {% endfor %}
+</ul>
+{% endblock %}

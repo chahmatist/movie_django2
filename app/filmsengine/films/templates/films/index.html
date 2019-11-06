@@ -1,0 +1,25 @@
+{% extends 'films/base_films.html' %}
+{% load static %}
+
+{% block title %}
+    vmovies
+{% endblock %}
+
+{% block content %}
+
+                    <div class="title">
+                        <h2>NEW MOVIES</h2>
+                        <a class="bookmark" href="{% url 'movies_all_url' %}">All new movies >></a>
+                    </div>
+                    <ul class="thumbs thumbs2">
+                        {% for movi in movies %}
+                        <li>
+                            <a href="{{ movi.get_absolute_url }}"
+                               title="{{ movi.title }}"><em>hdrip</em><span>{{ movi.title }}</span><img
+                                src="{{ movi.image.url }}" alt="{{ movi.title }}"/>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+
+{% endblock %}
