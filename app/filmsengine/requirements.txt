@@ -4,7 +4,7 @@ chardet==3.0.4
 Django==2.2.4
 get==2019.4.13
 idna==2.8
-lxml==4.4.0
+lxml==4.6.3
 my-fake-useragent==0.1.1
 mysqlclient==1.4.4
 Pillow==6.1.0
